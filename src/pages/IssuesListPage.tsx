@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 // import IssueItem from '../components/IssueItem';
 import { getIssueList } from '../API/github.issue';
 import { IssueListType } from '../types/issue';
+import IssueItem from '../components/IssueItem';
+import Advertisements from '../components/Advertisements';
 
 function IssuesListPage() {
 	const [issues, setIssues] = useState<IssueListType[]>([]);
@@ -31,7 +33,26 @@ function IssuesListPage() {
 		console.log(issues);
 	}, [issues]);
 
-	return <div>asdf</div>;
+	return (
+		<div>
+			<ul>
+				{issues.map((item, index) => (
+					<React.Fragment key={index}>
+						{index === 0
+							? null
+							: index % 4 === 0 && (
+									<li key={`advertise image ${index}`}>
+										<Advertisements />
+									</li>
+							  )}
+						<li key={item.number}>
+							<IssueItem issue={item} />
+						</li>
+					</React.Fragment>
+				))}
+			</ul>
+		</div>
+	);
 }
 
 // 해야할일 정리
