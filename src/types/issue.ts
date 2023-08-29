@@ -5,7 +5,6 @@ export interface IssueListType {
 	create_at: string;
 	user: {
 		login: string;
-		avatar_url: string;
 	};
 }
 
