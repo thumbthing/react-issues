@@ -19,3 +19,8 @@ export interface IssueDetailType {
 		avatar_url: string;
 	};
 }
+
+export interface ErrorType {
+	name?: string;
+	message?: string;
+}
