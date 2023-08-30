@@ -5,6 +5,7 @@ import IssuesListPage from './pages/IssuesListPage';
 import IssuesDetailPage from './pages/IssuesDetailPage';
 import { ErrorType } from './types/issue';
 import ErrorPage from './pages/ErrorPage';
+import Header from './components/layout/Header';
 
 function App() {
 	const [isError, setIsError] = useState<ErrorType>({ name: 'test', message: 'test' });
@@ -24,6 +25,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
+			<Header />
 			<Routes>
 				<Route path="/" element={<IssuesListPage handleError={handleError} />} />
 				<Route path="/detail/*" element={<IssuesDetailPage handleError={handleError} />} />
