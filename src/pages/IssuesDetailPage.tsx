@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import MDEditor from '@uiw/react-md-editor';
 import { ErrorType, IssueDetailType } from '../types/issue';
 import { empTyParamsInterceptor } from '../API/instance';
 import { getSingleIssue } from '../API/github.issue';
@@ -67,7 +68,7 @@ function IssuesDetailPage({ handleError }: IssuesDetailPageProps) {
 					<h5>{singleIssue?.comments}</h5>
 				</div>
 				<div>
-					<h5>{singleIssue?.body}</h5>
+					<MDEditor.Markdown source={singleIssue?.body} />
 				</div>
 			</IssueDetialItemContainer>
 		</>
