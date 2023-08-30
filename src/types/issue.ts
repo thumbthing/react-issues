@@ -2,7 +2,7 @@ export interface IssueListType {
 	number: number;
 	title: string;
 	comments: number;
-	create_at: string;
+	created_at: string;
 	user: {
 		login: string;
 	};
@@ -12,7 +12,7 @@ export interface IssueDetailType {
 	number: number;
 	title: string;
 	commets: number;
-	create_at: string;
+	created_at: string;
 	body: string;
 	user: {
 		login: string;
