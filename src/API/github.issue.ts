@@ -4,6 +4,6 @@ export const getIssueList = async () => {
 	return instance.get(`issues`);
 };
 
-export const getSingleIssue = async (issueNumber: number) => {
-	return instance.get(`issues/${issueNumber}`);
+export const getSingleIssue = async (issueNumberString: string) => {
+	return instance.get(`issues/${issueNumberString}`);
 };
