@@ -26,7 +26,7 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<IssuesListPage handleError={handleError} />} />
-				<Route path="/detail" element={<IssuesDetailPage handleError={handleError} />} />
+				<Route path="/detail/*" element={<IssuesDetailPage handleError={handleError} />} />
 				{isError && (
 					<Route path="/error" element={<ErrorPage error={isError} setErrorClear={clearErrorAfterHandled} />} />
 				)}
