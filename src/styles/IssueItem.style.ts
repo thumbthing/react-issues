@@ -1,0 +1,30 @@
+import { styled } from 'styled-components';
+
+const StyledIssueItem = styled.div`
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px 0;
+	background-color: #f9f9f9;
+
+	> div {
+		display: flex;
+		justify-content: space-between;
+		font-weight: bold;
+	}
+
+	> div:nth-child(2) {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 5px;
+		font-size: 0.8rem;
+		color: #666;
+	}
+
+	> div:nth-child(3) {
+		margin-top: 5px;
+		font-size: 0.9rem;
+		color: #333;
+	}
+`;
+
+export default StyledIssueItem;
