@@ -11,7 +11,7 @@ export interface IssueListType {
 export interface IssueDetailType {
 	number: number;
 	title: string;
-	commets: number;
+	comments: number;
 	created_at: string;
 	body: string;
 	user: {
