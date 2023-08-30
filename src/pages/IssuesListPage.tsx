@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getIssueList } from '../API/github.issue';
-import { IssueListType } from '../types/issue';
+import { ErrorType, IssueListType } from '../types/issue';
 import IssueItem from '../components/IssueItem';
 import Advertisements from '../components/Advertisements';
 import { activateInterceptor, deactivateInterceptor } from '../API/instance';
 import Loading from '../components/Loading';
 
-function IssuesListPage() {
+interface IssuesListPageProps {
+	handleError: (error: ErrorType | unknown) => void;
+}
+
+function IssuesListPage({ handleError }: IssuesListPageProps) {
 	const [issues, setIssues] = useState<IssueListType[]>([]);
 	const observerRef = useRef<IntersectionObserver>();
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -22,7 +26,7 @@ function IssuesListPage() {
 			setIssues(newIssues);
 			deactivateInterceptor(interceptor);
 		} catch (error) {
-			alert(error);
+			handleError(error);
 		} finally {
 			setIsLoading(false);
 		}
