@@ -1,33 +1,48 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
-const ErrorContainer = styled.div`
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+export const PageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-	min-height: 50vh;
-	max-height: 100vh;
-	min-width: 100vh;
-	max-width: 200vh;
-
-	h1 {
-		font-size: 1.5rem;
-		margin-bottom: 10px;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	}
-
-	h5 {
-		font-size: 1rem;
-		margin-bottom: 5px;
-		color: #888;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	}
+	justify-content: center;
+	height: 100vh;
+	background-color: #f4f4f4;
+	font-family: Arial, sans-serif;
 `;
 
-export default ErrorContainer;
+export const ErrorMessageContainer = styled.div`
+	border: 3px solid #ccc;
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 20px;
+`;
+
+export const Header = styled.h1`
+	font-size: 24px;
+	margin-bottom: 10px;
+`;
+
+export const Subheader = styled.h3`
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 20px;
+`;
+
+export const ButtonWrapper = styled.div`
+	display: flex;
+	gap: 10px;
+`;
+
+export const Button = styled.button`
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 80px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: #0056b3;
+	}
+`;

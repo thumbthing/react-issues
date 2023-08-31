@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ErrorType } from '../types/issue';
-import ErrorContainer from '../styles/pages/ErrorPage.style';
+import {
+	Button,
+	ButtonWrapper,
+	ErrorMessageContainer,
+	Header,
+	PageContainer,
+	Subheader,
+} from '../styles/pages/ErrorPage.style';
 
 interface ErrorPageProps {
 	error: ErrorType;
@@ -13,22 +20,38 @@ function ErrorPage({ error, setErrorClear }: ErrorPageProps) {
 
 	const handleOnClick = () => {
 		setErrorClear();
-		navigate('/');
 	};
 
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-		if (e.key === 'Enter' || e.key === ' ') {
-			setErrorClear();
-			navigate('/');
-		}
-	};
+	const returnToMainPage = useCallback(() => {
+		handleOnClick();
+		navigate('/');
+	}, [navigate, handleOnClick]);
+
+	const returnToPreviousPage = useCallback(() => {
+		handleOnClick();
+		navigate(-1);
+	}, [navigate, handleOnClick]);
 
 	return (
-		<ErrorContainer role="button" tabIndex={0} onClick={handleOnClick} onKeyDown={handleKeyDown}>
-			<h1>{error.name}</h1>
-			<h5>{error.message}</h5>
-			<h5>press Enter or Space to go back to Issue List</h5>
-		</ErrorContainer>
+		<PageContainer>
+			<div>
+				<Header>사용할 수 없는 페이지 입니다.</Header>
+			</div>
+			<div>
+				<ErrorMessageContainer>
+					<Header>{error.name}</Header>
+					<Subheader>{error.message}</Subheader>
+				</ErrorMessageContainer>
+				<Subheader>
+					이용에 불편을 드려 죄송합니다 <br /> 주소를 다시 한 번 확인해주세요
+				</Subheader>
+			</div>
+
+			<ButtonWrapper>
+				<Button onClick={returnToPreviousPage}>이전 페이지로</Button>
+				<Button onClick={returnToMainPage}>메인 페이지로</Button>
+			</ButtonWrapper>
+		</PageContainer>
 	);
 }
 
