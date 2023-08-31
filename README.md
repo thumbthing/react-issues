@@ -8,8 +8,8 @@ git clone https://github.com/thumbthing/react-issues.git
 npm install
 npm start
 ```
-## 기간
-
+## 베포 url
+ [베포 url](https://react-issues-rl4cyrtee-thumbthing.vercel.app/)
 
 ## Environment 세팅
 
