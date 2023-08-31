@@ -59,7 +59,10 @@ wanted pre-onboarding 2주차 개인과제
 │   ├── Header.style.ts
 │   ├── IssueItem.style.ts
 │   ├── IssuesDetail.style.ts
-│   └── Loading.style.ts
+│   ├── Loading.style.ts
+│   └── pages
+│       ├── ErrorPage.style.ts
+│       └── IssuesPage.style.ts
 └── types
     └── issue.ts
 ```
