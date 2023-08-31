@@ -8,7 +8,7 @@ import ErrorPage from './pages/ErrorPage';
 import Header from './components/layout/Header';
 
 function App() {
-	const [isError, setIsError] = useState<ErrorType>({ name: 'test', message: 'test' });
+	const [isError, setIsError] = useState<ErrorType>({ name: 'Default Error Name', message: 'Default Error Message' });
 
 	const handleError = (error: ErrorType | unknown) => {
 		if (error instanceof Error) {
