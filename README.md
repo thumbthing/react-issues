@@ -161,3 +161,52 @@ wanted pre-onboarding 2주차 개인과제
 >
 > - App에서 관리 중인 state를 기반으로 각 페이지에서 에러가 발생할 경우 Error의프러퍼티를 전달하여 name, message, status를 페이지에 렌더
 > - 에러 핸들링 이후 Erro state를 초기화 후 List Page로 Redirect
+
+---
+`API`
+
+```javascript
+// interceptor를 적용하고 state를 최신화 후 eject 함
+export const deactivateInterceptor = (interceptor: number | null) => {
+	if (interceptor !== null) {
+		instance.interceptors.request.eject(interceptor);
+	}
+};
+
+// Detail Page interceptor
+export const empTyParamsInterceptor = (url: string) => {
+	const isUrlDetail = url.includes('detail');
+	const interceptor = instance.interceptors.request.use((config) => {
+		if (isUrlDetail) {
+			const newConfig = { ...config, params: NO_PARAMS };
+			return newConfig;
+		}
+		return config;
+	});
+	return interceptor;
+};
+```
+
+```javacript
+<!-- // example use -->
+
+const getSingleDetailIssue = async () => {
+		try {
+			setIsLoading(true);
+			empTyParamsInterceptor(URL);
+			const URLParts = URL.split('/');
+			const issueNumber = URLParts[URLParts.length - 1];
+			const response = await getSingleIssue(issueNumber);
+			if (response?.status === 200) {
+				setSingleIssue(response?.data);
+			}
+			setIsLoading(false);
+		} catch (error) {
+			handleError(error);
+		}
+	};
+
+```
+
+- axios interceptor를 함수로 필요시 호출하여 activate / eject 하는 방식으로 구현
+- 이유: 지속적으로 변하는 parmas.page의 연속되는 렌더링으로 인해
