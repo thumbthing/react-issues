@@ -4,7 +4,14 @@ import { ErrorType, IssueDetailType } from '../types/issue';
 import { empTyParamsInterceptor } from '../API/instance';
 import { getSingleIssue } from '../API/github.issue';
 import Loading from '../components/Loading';
-import IssueDetialItemContainer from '../styles/IssuesDetail.style';
+import {
+	MarkdownContainer,
+	DetailContainer,
+	UserInfoContainer,
+	IssueInfoContainer,
+	ImageIssueTitle,
+	UserDateComments,
+} from '../styles/IssuesDetail.style';
 
 interface IssuesDetailPageProps {
 	handleError: (error: ErrorType | unknown) => void;
@@ -54,23 +61,29 @@ function IssuesDetailPage({ handleError }: IssuesDetailPageProps) {
 	return (
 		<>
 			{isLoading && <Loading />}
-			<IssueDetialItemContainer>
-				<div>
-					<img src={`${singleIssue?.user.avatar_url}`} alt={`${singleIssue?.user.login} profile`} />
-					<div>
-						<span>
-							#{singleIssue?.number} title: {singleIssue?.title}
-						</span>
-						<h6>
-							작성자: {singleIssue?.user.login}, 작성일: {issueDate}
-						</h6>
-					</div>
-					<h5>{singleIssue?.comments}</h5>
-				</div>
-				<div>
+			<DetailContainer>
+				<UserInfoContainer>
+					<IssueInfoContainer>
+						<ImageIssueTitle>
+							<img src={`${singleIssue?.user.avatar_url}`} alt={`${singleIssue?.user.login} profile`} />
+							<div>
+								<h4>#{singleIssue?.number}</h4>
+								<h2>title: {singleIssue?.title}</h2>
+							</div>
+						</ImageIssueTitle>
+						<UserDateComments>
+							<div>
+								<h4>작성자: {singleIssue?.user.login}</h4>
+								<h4>작성일: {issueDate}</h4>
+							</div>
+							<h5>Comments : {singleIssue?.comments}</h5>
+						</UserDateComments>
+					</IssueInfoContainer>
+				</UserInfoContainer>
+				<MarkdownContainer>
 					<MDEditor.Markdown source={singleIssue?.body} />
-				</div>
-			</IssueDetialItemContainer>
+				</MarkdownContainer>
+			</DetailContainer>
 		</>
 	);
 }
