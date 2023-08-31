@@ -4,7 +4,12 @@ import LoadingContainer from '../styles/Loading.style';
 function Loading() {
 	return (
 		<LoadingContainer>
-			<h1>Loading</h1>
+			<h1>
+				Please wait for a second
+				<br />
+				<br />
+				Loading new issues ...
+			</h1>
 		</LoadingContainer>
 	);
 }

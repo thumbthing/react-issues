@@ -5,6 +5,7 @@ import IssueItem from '../components/IssueItem';
 import Advertisements from '../components/Advertisements';
 import { activateInterceptor, deactivateInterceptor } from '../API/instance';
 import Loading from '../components/Loading';
+import IssuePageContainer from '../styles/pages/IssuesPage.style';
 
 interface IssuesListPageProps {
 	handleError: (error: ErrorType | unknown) => void;
@@ -81,7 +82,7 @@ function IssuesListPage({ handleError }: IssuesListPageProps) {
 	}, [issues]);
 
 	return (
-		<div ref={containerRef}>
+		<IssuePageContainer ref={containerRef}>
 			<ul>
 				{isLoading && <Loading />}
 				{issues.map((item, index) => (
@@ -99,7 +100,7 @@ function IssuesListPage({ handleError }: IssuesListPageProps) {
 					</React.Fragment>
 				))}
 			</ul>
-		</div>
+		</IssuePageContainer>
 	);
 }
 
