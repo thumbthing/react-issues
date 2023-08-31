@@ -1,7 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IssueListType } from '../types/issue';
-import StyledIssueItem from '../styles/IssueItem.style';
+import {
+	IssueCodeTitleContainer,
+	StyledIssueItem,
+	IssueComments,
+	IssueTitleAndUser,
+	IssueNumberAndDate,
+} from '../styles/IssueItem.style';
 
 interface IssueItemProps {
 	issue: IssueListType;
@@ -27,18 +33,18 @@ function IssueItem({ issue }: IssueItemProps) {
 	return (
 		<StyledIssueItem onClick={() => navigateToDetailIssue(issue.number)}>
 			<div>
+				<IssueCodeTitleContainer>
+					<IssueNumberAndDate>#{issue.number}</IssueNumberAndDate>
+					<IssueTitleAndUser>{issue.title}</IssueTitleAndUser>
+				</IssueCodeTitleContainer>
 				<div>
-					<span>
-						code: {issue.number} title: {issue.title}
-					</span>
-				</div>
-				<div>
-					<span>
-						작성자: {issue.user?.login} 작성일: {issueDate}
-					</span>
+					<div>
+						<IssueTitleAndUser>작성자: {issue.user?.login}</IssueTitleAndUser>
+						<IssueNumberAndDate>작성일: {issueDate}</IssueNumberAndDate>
+					</div>
+					<IssueComments>comments: {issue.comments}</IssueComments>
 				</div>
 			</div>
-			<div>코멘트: {issue.comments}</div>
 		</StyledIssueItem>
 	);
 }
