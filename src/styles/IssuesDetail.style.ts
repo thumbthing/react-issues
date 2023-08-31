@@ -5,6 +5,7 @@ const IssueDetialItemContainer = styled.div`
 	padding: 10px;
 	margin: 10px 0;
 	background-color: #f9f9f9;
+	padding: 70px;
 
 	> div {
 		display: flex;
